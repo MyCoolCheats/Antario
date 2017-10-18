@@ -5,7 +5,9 @@ std::vector<std::pair<int, int>> custom_glow_entities;
 void CustomGlow::FrameStageNotify(ClientFrameStage_t stage)
 {
 	// Skip reserved slots that are guaranteed to be managed by the engine.
-	for (int i = 64; i < pEntityList->GetHighestEntityIndex(); i++)
+	//scalar => zero-initialization because c++98
+	//68 because 64-67 are used by some useless shit check it urself with cl_findent
+	for (int i{68}; i < pEntityList->GetHighestEntityIndex(); i++)
 	{
 		C_BaseEntity* entity = pEntityList->GetClientEntity(i);
 
