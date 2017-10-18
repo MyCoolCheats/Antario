@@ -1,3 +1,5 @@
+#include <limits>
+#include <cinttypes>
 #include "Features.h"
 
 bool Settings::Airstuck::enabled = false;
@@ -12,5 +14,5 @@ void Airstuck::CreateMove(CUserCmd* cmd)
 		return;
 
 	if (pInputSystem->IsButtonDown(Settings::Airstuck::key))
-		cmd->tick_count = 16777216;
+		cmd->tick_count = std::numeric_limits<int_fast16_t>::max();
 }
