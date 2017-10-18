@@ -194,7 +194,7 @@ void DoAntiAimY(Vector& angle, int command_number, bool bFlip, bool& clamp)
 		*/
 		break;
 	case AntiAimType_Y::LBYONGROUND:
-		C_BasePlayer* player = ((C_BasePlayer*)pEntityList->GetClientEntity(pEngine->GetLocalPlayer()));
+		static C_BasePlayer* player = ((C_BasePlayer*)pEntityList->GetClientEntity(pEngine->GetLocalPlayer()));
 		if (player->GetFlags() & FL_ONGROUND)
 			angle.y = *((C_BasePlayer*)pEntityList->GetClientEntity(pEngine->GetLocalPlayer()))->GetLowerBodyYawTarget() + rand() % 35 + 165;
 		else
