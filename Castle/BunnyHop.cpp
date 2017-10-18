@@ -7,8 +7,8 @@ void BHop::CreateMove(CUserCmd* cmd)
 	if (!Settings::BHop::enabled)
 		return;
 
-	static bool bLastJumped = false;
-	static bool bShouldFake = false;
+	static bool last_jumped = false;
+	static bool should_fake = false;
 
 	C_BasePlayer* localplayer = (C_BasePlayer*)pEntityList->GetClientEntity(pEngine->GetLocalPlayer());
 
@@ -18,27 +18,27 @@ void BHop::CreateMove(CUserCmd* cmd)
 	if (localplayer->GetMoveType() == MOVETYPE_LADDER || localplayer->GetMoveType() == MOVETYPE_NOCLIP)
 		return;
 
-	if (!bLastJumped && bShouldFake)
+	if (!last_jumped && should_fake)
 	{
-		bShouldFake = false;
+		should_fake = false;
 		cmd->buttons |= IN_JUMP;
 	}
 	else if (cmd->buttons & IN_JUMP)
 	{
 		if (localplayer->GetFlags() & FL_ONGROUND)
 		{
-			bLastJumped = true;
-			bShouldFake = true;
+			last_jumped = true;
+			should_fake = true;
 		}
 		else
 		{
 			cmd->buttons &= ~IN_JUMP;
-			bLastJumped = false;
+			last_jumped = false;
 		}
 	}
 	else
 	{
-		bLastJumped = false;
-		bShouldFake = false;
+		last_jumped = false;
+		should_fake = false;
 	}
 }
