@@ -37,7 +37,7 @@ void Math::AngleVectors(const Vector &angles, Vector& forward)
 void Math::NormalizeAngles(Vector& angle)
 {
 	while (angle.x > 89.0f)
-		angle.x -= 180.f;
+		angle.x -= 180.f; //thanks masterpaster15 xD
 
 	while (angle.x < -89.0f)
 		angle.x += 180.f;
@@ -51,16 +51,9 @@ void Math::NormalizeAngles(Vector& angle)
 
 void Math::ClampAngles(Vector& angle)
 {
-	if (angle.y > 180.0f)
-		angle.y = 180.0f;
-	else if (angle.y < -180.0f)
-		angle.y = -180.0f;
-
-	if (angle.x > 89.0f)
-		angle.x = 89.0f;
-	else if (angle.x < -89.0f)
-		angle.x = -89.0f;
-
+	std::clamp(angle.x, -89.f, 89.f); //BECAUSE SSE2 INTRINSICS I SWER))
+	std::clamp(angle.y, -180.f, 180.f);
+	
 	angle.z = 0;
 }
 
@@ -141,6 +134,8 @@ void Math::VectorTransform(Vector &in1, const matrix3x4_t& in2, Vector &out)
 Vector Math::CalcAngle(Vector src, Vector dst)
 {
 	Vector angles;
+	angles.Normalize(); //novac
+	
 	Vector delta = src - dst;
 
 	Math::VectorAngles(delta, angles);
