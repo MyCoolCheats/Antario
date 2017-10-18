@@ -8,19 +8,19 @@ MoveData data;
 void Prediction::Start(CUserCmd* cmd)
 {
 	//if (!Settings::Misc::EnginePrediction::Enabled)
-	//	return;
+	//	return; //PLS DISABLE WHY WOULD I WANT IT ENABLED EZ VAC
 
 	C_BasePlayer * Local = (C_BasePlayer*)pEntityList->GetClientEntity(pEngine->GetLocalPlayer());
 	if (!Local)
-		return;
+		return; //WHAT
 
-	*pPredSeed = cmd->command_number;
+	*pPredSeed = cmd->command_number; //P
 
 	m_flOldCurtime = pGlobalVars->frametime;
 	m_flOldFrametime = pGlobalVars->curtime;
 
 	pGlobalVars->frametime = pGlobalVars->interval_per_tick;
-	pGlobalVars->curtime = Local->GetTickBase() * pGlobalVars->interval_per_tick;
+	//pGlobalVars->curtime = Local->GetTickBase() * pGlobalVars->interval_per_tick; NO
 
 	pGameMovement->StartTrackPredictionErrors(Local);
 
@@ -36,7 +36,7 @@ void Prediction::Start(CUserCmd* cmd)
 void Prediction::End()
 {
 	//if (!Settings::Misc::EnginePrediction::Enabled)
-	//	return;
+	//	return;   YEA WHO NEEDS A SEED
 
 	C_BasePlayer * Local = (C_BasePlayer*)pEntityList->GetClientEntity(pEngine->GetLocalPlayer());
 	if (!Local)
@@ -47,7 +47,7 @@ void Prediction::End()
 
 	*pPredSeed = -1;
 
-	pGlobalVars->curtime = m_flOldCurtime;
+	//pGlobalVars->curtime = m_flOldCurtime; FUCKING USELESS
 	pGlobalVars->frametime = m_flOldFrametime;
 }
 
