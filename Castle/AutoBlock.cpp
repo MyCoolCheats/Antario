@@ -10,4 +10,10 @@ void Autoblock::CreateMove(CUserCmd* cmd)
 	
 	if (Settings::Autoblock::enabled)
 		return;
+	
+	/*
+	http://www.nationalbullyinghelpline.co.uk/
+	BULLYING IS DISCRIMINATION
+	BULLYING DOES NOT DISCRIMINATE
+	*/
 }
