@@ -26,7 +26,7 @@ void Prediction::Start(CUserCmd* cmd)
 
 	memset(&data, 0, sizeof(MoveData));
 
-	pMoveHelper->SetHost(Local);
+	//pMoveHelper->SetHost(Local); //just so you learn to not get your shoes wet, nerd
 	pPrediction->SetupMove(Local, cmd, pMoveHelper, &data);
 	pGameMovement->ProcessMovement(Local, &data);
 	pPrediction->FinishMove(Local, cmd, &data);
