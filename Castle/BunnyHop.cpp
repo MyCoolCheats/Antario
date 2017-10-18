@@ -15,7 +15,7 @@ void BHop::CreateMove(CUserCmd* cmd)
 	if (!localplayer)
 		return;
 
-	if (localplayer->GetMoveType() == MOVETYPE_LADDER || localplayer->GetMoveType() == MOVETYPE_NOCLIP)
+	if (localplayer->GetMoveType() == MOVETYPE_LADDER)
 		return;
 
 	if (!last_jumped && should_fake)
