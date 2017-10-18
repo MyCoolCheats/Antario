@@ -725,7 +725,7 @@ void ESP::DrawChicken(C_BaseEntity* chicken)
 
 void ESP::DrawFish(C_BaseEntity* fish)
 {
-	DrawEntity(fish, "Fish", Color::FromImColor(Settings::ESP::fishColor.Color()));
+	return;
 }
 
 void ESP::DrawThrowable(C_BaseEntity* throwable, ClientClass* client)
