@@ -24,7 +24,7 @@ void FakeWalk(CUserCmd* cmd, bool & bSendPacket)
 	{
 		bSendPacket = false;
 
-		cmd->tick_count += 10;
+		cmd->tick_count -= 10;
 		cmd->command_number += 7 + cmd->tick_count % 2 ? 0 : 1;
 
 		cmd->buttons |= localplayer->GetMoveType() == IN_BACK;
