@@ -29,7 +29,7 @@ void Autowall::ScaleDamage(HitGroups hitgroup, C_BasePlayer* enemy, float weapon
 		if (hitgroup == HitGroups::HITGROUP_HEAD)
 		{
 			if (enemy->HasHelmet())
-				current_damage *= weapon_armor_ratio * 0.5f;
+				current_damage *= weapon_armor_ratio * 0.75f;
 		}
 		else
 			current_damage *= weapon_armor_ratio * 0.5f;
