@@ -13,9 +13,9 @@ void ASUSWalls::FrameStageNotify(ClientFrameStage_t stage)
 	{
 		for (const auto& it : worldMaterials)
 		{
-			IMaterial* mat = pMaterial->GetMaterial(it.first);
+			IMaterial* mat = pMaterial->FindMaterial("asus");
 
-			if (!mat)
+			if (!mat || mat->IsErrorMaterial())
 				continue;
 
 			mat->GetColorModulation(&r, &g, &b);
