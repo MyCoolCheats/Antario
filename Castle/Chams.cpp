@@ -166,17 +166,13 @@ void Chams::DrawModelExecute(IMatRenderContext* matctx, const DrawModelState_t& 
 	if (!pInfo.pModel)
 		return;
 
-	static bool materialsCreated = false;
-	if (!materialsCreated)
-	{
-		materialChams = Util::CreateMaterial("VertexLitGeneric", "VGUI/white_additive", false, true, true, true, true);
-		materialChamsIgnorez = Util::CreateMaterial("VertexLitGeneric", "VGUI/white_additive", true, true, true, true, true);
-		materialChamsFlat = Util::CreateMaterial("UnlitGeneric", "VGUI/white_additive", false, true, true, true, true);
-		materialChamsFlatIgnorez = Util::CreateMaterial("UnlitGeneric", "VGUI/white_additive", true, true, true, true, true);
-		materialChamsArms = Util::CreateMaterial("VertexLitGeneric", "VGUI/white_additive", false, true, true, true, true);
-		materialChamsWeapons = Util::CreateMaterial("VertexLitGeneric", "VGUI/white_additive", false, true, true, true, true);
-		materialsCreated = true;
-	}
+	//create materials every frame so vac cant find a .vmt file on disk hence no vac
+	materialChams = Util::CreateMaterial("VertexLitGeneric", "VGUI/white_additive", false, true, true, true, true);
+	materialChamsIgnorez = Util::CreateMaterial("VertexLitGeneric", "VGUI/white_additive", true, true, true, true, true);
+	materialChamsFlat = Util::CreateMaterial("UnlitGeneric", "VGUI/white_additive", false, true, true, true, true);
+	materialChamsFlatIgnorez = Util::CreateMaterial("UnlitGeneric", "VGUI/white_additive", true, true, true, true, true);
+	materialChamsArms = Util::CreateMaterial("VertexLitGeneric", "VGUI/white_additive", false, true, true, true, true);
+	materialChamsWeapons = Util::CreateMaterial("VertexLitGeneric", "VGUI/white_additive", false, true, true, true, true);
 
 	std::string modelName = pModelInfo->GetModelName(pInfo.pModel);
 
