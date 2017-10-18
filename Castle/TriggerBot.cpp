@@ -132,7 +132,7 @@ void Triggerbot::CreateMove(CUserCmd *cmd)
 	bool can_shoot = true;
 	float server_time = localplayer->GetTickBase() * pGlobalVars->interval_per_tick;
 	float next_shot = activeWeapon->GetNextPrimaryAttack() - server_time;
-	if (next_shot > 0)
+	if (next_shot > 0.f)
 		can_shoot = false;
 	if (!can_shoot)
 	{
