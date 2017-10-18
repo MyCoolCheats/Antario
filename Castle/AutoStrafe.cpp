@@ -8,8 +8,10 @@ void LegitStrafe(C_BasePlayer* localplayer, CUserCmd* cmd)
 {
 	if (localplayer->GetFlags() & FL_ONGROUND)
 		return;
-
-	if (cmd->buttons & IN_FORWARD || cmd->buttons & IN_BACK || cmd->buttons & IN_MOVELEFT || cmd->buttons & IN_MOVERIGHT)
+	
+	int buttons = cmd->buttons;
+	
+	if (buttons & IN_FORWARD || buttons & IN_BACK || buttons & IN_MOVELEFT || buttons & IN_MOVERIGHT)
 		return;
 
 	if (cmd->mousedx <= 1 && cmd->mousedx >= -1)
