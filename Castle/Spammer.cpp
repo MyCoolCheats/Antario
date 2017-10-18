@@ -5,16 +5,16 @@ bool Settings::Spammer::say_team = false;
 bool Settings::Spammer::KillSpammer::enabled = false;
 bool Settings::Spammer::KillSpammer::sayTeam = false;
 std::vector<std::string> Settings::Spammer::KillSpammer::messages = {
-	"$nick just got owned by Resurrection",
-	"$nick watches Child Porn",
+	"$nick just got owned by antario v8",
+	"$nick watches japanese cartoons",
 };
 bool Settings::Spammer::RadioSpammer::enabled = false;
 std::vector<std::string> Settings::Spammer::NormalSpammer::messages = {
-	"Resurrection owns me and all",
-	"Your cheat sucks me dry",
-	"Resurrection only let me out so I could play this game, please be nice!",
-	"Resurrection nutted but you keep sucken",
-	">tfw no vac for Resurrection"
+	"Antario v8 owns me and all",
+	"Your cheat is bad",
+	"Antario only let me out so I could play this game, please be nice!",
+	"Antario - family friendly cheat",
+	">tfw never vac for antario"
 };
 int Settings::Spammer::PositionSpammer::team = 1;
 bool Settings::Spammer::PositionSpammer::showName = true;
