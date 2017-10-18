@@ -23,12 +23,12 @@ void View::FrameStageNotify(ClientFrameStage_t stage)
 	{
 		Vector* aim_punch_angle = localplayer->GetAimPunchAngle();
 
-		old_aim_punch_angle = Vector(0, 0, 0);
+		old_aim_punch_angle = Vector(0.f, 0.f, 0.f);
 
 		if (aim_punch_angle)
 		{
 			old_aim_punch_angle = *aim_punch_angle;
-			*aim_punch_angle = Vector(0, 0, 0);
+			*aim_punch_angle = Vector(0.f, 0.f, 0.f);
 		}
 	}
 
@@ -36,12 +36,12 @@ void View::FrameStageNotify(ClientFrameStage_t stage)
 	{
 		Vector* view_punch_angle = localplayer->GetViewPunchAngle();
 
-		old_view_punch_angle = Vector(0, 0, 0);
+		old_view_punch_angle = Vector(0.f, 0.f, 0.f);
 
 		if (view_punch_angle)
 		{
 			old_view_punch_angle = *view_punch_angle;
-			*view_punch_angle = Vector(0, 0, 0);
+			*view_punch_angle = Vector(0.f, 0.f, 0.f);
 		}
 	}
 }
