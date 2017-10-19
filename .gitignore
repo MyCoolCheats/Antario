@@ -1,0 +1,14 @@
+*.obj
+*.tlog
+*.log
+*.VC.opendb
+*.VC.db
+*.ipch
+*.idb
+*.pdb
+*.ilk
+*.dll
+*.suo
+*.enc
+*.xml
+*.lastcodeanalysissucceeded

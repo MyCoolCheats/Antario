@@ -32,8 +32,8 @@ void SpoofedConvar::Spoof() {
 	if (!IsSpoofed() && m_pOriginalCVar) {
 		//Save old name value and flags so we can restore the cvar lates if needed
 		m_iOriginalFlags = m_pOriginalCVar->nFlags;
-		strcpy(m_szOriginalName, m_pOriginalCVar->pszName);
-		strcpy(m_szOriginalValue, m_pOriginalCVar->pszDefaultValue);
+		std::strcpy(m_szOriginalName, m_pOriginalCVar->pszName);
+		std::strcpy(m_szOriginalValue, m_pOriginalCVar->pszDefaultValue);
 
 		sprintf_s(m_szDummyName, 128, "d_%s", m_szOriginalName);
 
@@ -51,7 +51,7 @@ void SpoofedConvar::Spoof() {
 		VirtualProtect((LPVOID)m_pOriginalCVar->pszName, 128, PAGE_READWRITE, &dwOld);
 
 		//Rename the cvar
-		strcpy((char*)m_pOriginalCVar->pszName, m_szDummyName);
+		std::strcpy((char*)m_pOriginalCVar->pszName, m_szDummyName);
 
 		VirtualProtect((LPVOID)m_pOriginalCVar->pszName, 128, dwOld, &dwOld);
 

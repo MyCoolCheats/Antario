@@ -360,6 +360,9 @@
     <ClInclude Include="ImGui\stb_truetype.h">
       <Filter>ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="ImGui\imconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WalkBot.cpp">
@@ -404,9 +407,6 @@
     <ClCompile Include="ClanTagChanger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Config.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Console.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -423,9 +423,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EdgeJump.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="elem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">

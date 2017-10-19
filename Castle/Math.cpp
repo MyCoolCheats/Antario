@@ -1,4 +1,5 @@
 #include "Math.h"
+#include <algorithm>
 
 void inline Math::SinCos(float x, float* s, float* c)
 {
@@ -53,7 +54,7 @@ void Math::ClampAngles(Vector& angle)
 {
 	std::clamp(angle.x, -89.f, 89.f); //BECAUSE SSE2 INTRINSICS I SWER))
 	std::clamp(angle.y, -180.f, 180.f);
-	
+
 	angle.z = 0;
 }
 

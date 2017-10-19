@@ -1,3 +1,5 @@
+#define NOMINMAX
+
 #include <limits>
 #include <cinttypes>
 #include "Features.h"

@@ -2,8 +2,8 @@
 
 #include <windows.h>
 
-#include "imgui.h"
-#include "imgui_impl_dx9.h"
+#include "ImGui\imgui.h"
+#include "ImGui\examples\directx9_example\imgui_impl_dx9.h"
 
 class Renderer {
 private:

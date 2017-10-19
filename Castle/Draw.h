@@ -1,6 +1,6 @@
 #pragma once
 #include <Windows.h>
-#include "../interfaces.h"
+#include "interfaces.h"
 
 #include <stdio.h>
 #include <stdlib.h>

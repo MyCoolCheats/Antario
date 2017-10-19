@@ -46,7 +46,7 @@ void GetVal(Json::Value &config, char** setting)
 	if (config.isNull())
 		return;
 
-	*setting = strdup(config.asCString());
+	*setting = _strdup(config.asCString());
 }
 
 void GetVal(Json::Value &config, char* setting)

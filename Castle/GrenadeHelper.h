@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../SDK/SDK.h"
-#include "../settings.h"
+#include "SDK/SDK.h"
+#include "settings.h"
 #include <algorithm>
 
 

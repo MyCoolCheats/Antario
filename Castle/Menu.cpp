@@ -1024,20 +1024,21 @@ void Menu()
 
 					for (int team = (int)TeamID::TEAM_UNASSIGNED; team <= (int)TeamID::TEAM_COUNTER_TERRORIST; team++)
 					{
-						char* teamName = strdup("");
+						// fuckin use > c++13 standard
+						std::string teamName = "";
 						switch ((TeamID)team)
 						{
 						case TeamID::TEAM_UNASSIGNED:
-							teamName = strdup("Unassigned");
+							teamName = "Unassigned";
 							break;
 						case TeamID::TEAM_SPECTATOR:
-							teamName = strdup("Spectator");
+							teamName = "Spectator";
 							break;
 						case TeamID::TEAM_TERRORIST:
-							teamName = strdup("Terrorist");
+							teamName = "Terrorist";
 							break;
 						case TeamID::TEAM_COUNTER_TERRORIST:
-							teamName = strdup("Counter Terrorist");
+							teamName = "Counter Terrorist";
 							break;
 						}
 
@@ -1060,7 +1061,7 @@ void Menu()
 							ImGui::Text("%s", entityInformation.name);
 							ImGui::NextColumn();
 
-							ImGui::Text("%s", teamName);
+							ImGui::Text(teamName.c_str());
 							ImGui::NextColumn();
 
 							ImGui::Text("%s", (*csPlayerResource)->GetClan(it));

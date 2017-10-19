@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../interfaces.h"
-#include "../settings.h"
+#include "interfaces.h"
+#include "settings.h"
 #include <vector>
 namespace Walkbot
 {

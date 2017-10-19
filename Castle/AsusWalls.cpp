@@ -13,7 +13,7 @@ void ASUSWalls::FrameStageNotify(ClientFrameStage_t stage)
 	{
 		for (const auto& it : worldMaterials)
 		{
-			IMaterial* mat = pMaterial->FindMaterial("asus");
+			IMaterial* mat = pMaterial->FindMaterial("asus", NULL);
 
 			if (!mat || mat->IsErrorMaterial())
 				continue;

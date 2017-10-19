@@ -46,8 +46,8 @@ void DrawPlayer(IMatRenderContext* matctx, const DrawModelState_t& state, const 
 	if (entity != localplayer && entity->GetTeam() == localplayer->GetTeam() && !Settings::ESP::Filters::allies)
 		return;
 
-	IMaterial* visible_material;
-	IMaterial* hidden_material;
+	IMaterial* visible_material = nullptr;
+	IMaterial* hidden_material = nullptr;
 
 	if (Settings::ESP::Chams::type == (int)ChamsType::CHAMS || Settings::ESP::Chams::type == (int)ChamsType::CHAMS_XQZ)
 	{
