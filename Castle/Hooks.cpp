@@ -56,7 +56,7 @@ namespace Hooks
 	bool __stdcall hCreateMove(float frametime, CUserCmd* cmd)
 	{
 		ClientModeHook->GetOriginalFunction<CreateMoveFn>(24)(pClientMode, frametime, cmd);
-		if (cmd && cmd->command_number)
+		if (cmd && cmd->command_number >= 1)
 		{
 			PDWORD pEBP;
 			__asm mov pEBP, ebp;
@@ -65,7 +65,12 @@ namespace Hooks
 			bSendPacket = SendPacket;
 			bSendPackett = bSendPacket;
 			SendPacket = true;
-
+			
+			//as we know, data in createmove is already a tick old
+			//we compensate for that by adding 1 to tickcount
+			//and fooling the server to send us the fresh data
+			cmd->tickcount += 1;
+			
 			BHop::CreateMove(cmd);
 			AutoStrafe::CreateMove(cmd);
 			ShowRanks::CreateMove(cmd);
