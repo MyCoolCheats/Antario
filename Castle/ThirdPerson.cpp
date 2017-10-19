@@ -7,27 +7,31 @@ bool Settings::ThirdPerson::Real;
 void ThirdPerson::FrameStageNotify(ClientFrameStage_t stage)
 {
 	C_BasePlayer* localplayer = (C_BasePlayer*)pEntityList->GetClientEntity(pEngine->GetLocalPlayer());
-	
+	static bool Yeaman;
 	if (pEngine->IsInGame() && localplayer && stage == ClientFrameStage_t::FRAME_RENDER_START)
 	{
-		static Vector vecAngles;
-		pEngine->GetViewAngles(vecAngles);
+		ConVar* sv_hack = pCvar->FindVar("sv_cheats");
+		SpoofedConvar* sv_hackerman = new SpoofedConvar(sv_hack); //prevent mem leak
+		sv_hackerman->SetInt(1);
+		
 		if (Settings::ThirdPerson::enabled && localplayer->GetAlive())
 		{
-			if (!pInput->ThirdPerson)
-				pInput->ThirdPerson = true;
+			if (!Yeaman)
+			{
+			pEngine->ExecuteClientCmd("thirdperson");
+			Yeaman = true;
+			}
 
-			pInput->CameraVac = Vector(vecAngles.x, vecAngles.y, Settings::ThirdPerson::distance);
-
+				
 			if(Settings::ThirdPerson::Fake || Settings::ThirdPerson::Real && Settings::AntiAim::Pitch::enabled || Settings::AntiAim::Yaw::enabled)
 				*localplayer->GetVAngles() = lastTickViewAngles;
 		}
 		else
 		{
-			if (pInput->ThirdPerson)
+			if (Yeaman)
 			{
-				pInput->ThirdPerson = false;
-				pInput->CameraVac = Vector(vecAngles.x, vecAngles.y, 0);
+			pEngine->ExecuteClientCmd("firstperson");
+			Yeaman = false;
 			}
 		}
 	}
