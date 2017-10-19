@@ -15,7 +15,7 @@ std::vector<std::string> Settings::Spammer::NormalSpammer::messages = {
 	"Antario only let me out so I could play this game, please be nice!",
 	"Antario - family friendly cheat",
 	">tfw never vac for antario",
-       "never detected on linux"
+       "never detected on windows"
 };
 int Settings::Spammer::PositionSpammer::team = 1;
 bool Settings::Spammer::PositionSpammer::showName = true;
