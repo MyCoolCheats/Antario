@@ -1,4 +1,4 @@
-# ~~Aimtux~~ Antario-V2
+# ~~Aimtux~~ Antario-V8
 Antario for Windows, This is perfect!
 
 if needed:
