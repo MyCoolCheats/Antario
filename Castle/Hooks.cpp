@@ -3,19 +3,7 @@
 namespace Hooks
 { 
 	HRESULT WINAPI hPresent(IDirect3DDevice9* pDevice, RECT* pSourceRect, RECT* pDestRect, HWND hDestWindowOverride, RGNDATA* pDirtyRegion) {
-
-		if (GetAsyncKeyState(VK_SNAPSHOT) || pEngine->IsTakingScreenshot()) {
-			return Present(pDevice, pSourceRect, pDestRect, hDestWindowOverride, pDirtyRegion);
-		}
-
-		DWORD dwOld_D3DRS_COLORWRITEENABLE;
-		pDevice->GetRenderState(D3DRS_COLORWRITEENABLE, &dwOld_D3DRS_COLORWRITEENABLE);
-		pDevice->SetRenderState(D3DRS_COLORWRITEENABLE, 0xffffffff);
-
-		//Menu();
-
-		pDevice->SetRenderState(D3DRS_COLORWRITEENABLE, dwOld_D3DRS_COLORWRITEENABLE);
-
+		//why the fuck is this trash even hooked
 		return Present(pDevice, pSourceRect, pDestRect, hDestWindowOverride, pDirtyRegion);
 	}
 	HRESULT WINAPI hReset(LPDIRECT3DDEVICE9 pDevice, D3DPRESENT_PARAMETERS* pPresentationParameters) 
@@ -39,7 +27,7 @@ namespace Hooks
 		static unsigned int drawPanel;
 
 		if (!drawPanel)
-			if (strstr(pPanel->GetName(VGUIPanel), "MatSystemTopPanel"))
+			if (strstr(pPanel->GetName(VGUIPanel), "MatSystemTopPanel")) //we should get panel every frame
 				drawPanel = VGUIPanel;
 
 		if (VGUIPanel != drawPanel)
@@ -56,7 +44,7 @@ namespace Hooks
 	bool __stdcall hCreateMove(float frametime, CUserCmd* cmd)
 	{
 		ClientModeHook->GetOriginalFunction<CreateMoveFn>(24)(pClientMode, frametime, cmd);
-		if (cmd && cmd->command_number)
+		if (cmd && cmd->command_number >= 1)
 		{
 			PDWORD pEBP;
 			__asm mov pEBP, ebp;
@@ -65,7 +53,12 @@ namespace Hooks
 			bSendPacket = SendPacket;
 			bSendPackett = bSendPacket;
 			SendPacket = true;
-
+			
+			//as we know, data in createmove is already a tick old
+			//we compensate for that by adding 1 to tickcount
+			//and fooling the server to send us the fresh data
+			cmd->tick_count += 1;
+			
 			BHop::CreateMove(cmd);
 			AutoStrafe::CreateMove(cmd);
 			ShowRanks::CreateMove(cmd);
