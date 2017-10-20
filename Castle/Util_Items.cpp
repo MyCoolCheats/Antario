@@ -72,7 +72,7 @@ namespace Util
 
 		};  // ItemNames
 
-		std::string GetItemName(const enum ItemDefinitionIndex index)
+		std::string GetItemName(const ItemDefinitionIndex index)
 		{
 			return Util::MapReverseSearchOrDefault<std::string, ItemDefinitionIndex>(&ItemNames, index, "ITEM_INVALID");
 		}
