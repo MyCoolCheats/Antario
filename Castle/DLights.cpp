@@ -14,15 +14,15 @@ void Dlights::Paint()
 	if (!pEngine->IsInGame())
 		return;
 
-	C_BasePlayer* localplayer = (C_BasePlayer*)pEntityList->GetClientEntity(pEngine->GetLocalPlayer());
-	if (!localplayer)
-		return;
-
 	for (int i = 1; i < pEngine->GetMaxClients(); ++i)
 	{
 		C_BasePlayer* player = (C_BasePlayer*)pEntityList->GetClientEntity(i);
 		if (!player)
 			continue;
+		
+		C_BasePlayer* localplayer = (C_BasePlayer*)pEntityList->GetClientEntity(pEngine->GetLocalPlayer());
+		if (!localplayer)
+			return;
 
 		if (player == localplayer)
 			continue;
