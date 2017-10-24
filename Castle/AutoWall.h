@@ -18,11 +18,11 @@ namespace Autowall
 		int penetrate_count;
 	};
 
-	float GetDamage(const Vector& vecPoint, bool teamCheck, FireBulletData& fData);
+	double GetDamage(const Vector& vecPoint, bool teamCheck, FireBulletData& fData);
 	bool SimulateFireBullet(C_BaseCombatWeapon* pWeapon, bool teamCheck, FireBulletData &data);
 	bool HandleBulletPenetration(CCSWeaponInfo* weaponInfo, FireBulletData &data);
 	bool TraceToExit(Vector &end, trace_t *enter_trace, Vector start, Vector dir, trace_t *exit_trace);
 	bool DidHitNonWorldEntity(C_BasePlayer* player);
-	void ScaleDamage(HitGroups hitgroup, C_BasePlayer* enemy, float weapon_armor_ratio, float &current_damage);
-	float GetHitgroupDamageMultiplier(HitGroups iHitGroup);
+	void ScaleDamage(HitGroups hitgroup, C_BasePlayer* enemy, double weapon_armor_ratio, double &current_damage);
+	double GetHitgroupDamageMultiplier(HitGroups iHitGroup);
 }
